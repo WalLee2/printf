@@ -1,0 +1,19 @@
+.TH man 2 "19 November 2016" "0.32" "printf man page"
+.SH NAME
+printf
+.SH SYNOPSIS
+Simplified version of printf
+.SH DESCRIPTION
+The functions in the printf() family produce output according to a format as described below. The functions printf() and vprintf() write output to stdout, the standard output stream; fprintf() and vfprintf() write output to the given output stream; sprintf(), snprintf(), vsprintf() and vsnprintf() write to the character string str.
+
+The functions snprintf() and vsnprintf() write at most size bytes (including the terminating null byte ('\0')) to str.
+.SH OPTIONS
+No options.
+.SH SEE ALSO
+.I peerlearning(2), projectbased(2), fullstack(2), Betty(1)
+.SH BUGS
+Because sprintf() and vsprintf() assume an arbitrarily long string, callers must be careful not to overflow the actual space; this is often impossible to assure. Note that the length of the strings produced is locale-dependent and difficult to predict.
+
+.B Also, see Betty.
+.SH AUTHOR
+Walton Lee, Ian C.
