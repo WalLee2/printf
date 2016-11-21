@@ -8,46 +8,48 @@
  */
 int print_str(va_list args)
 {
-	char *j;
-	int i, chars;
+        char *j;
+        int i, chars;
 
-	j = va_arg(args, char *);
-	if (j == NULL)
-		return (-1);
-	i = 0;
-	while (j[i] != '\0')
-	{
-		_putchar(j[i]);
-		i++;
-		chars++;
-	}
-	return (chars);
+        j = va_arg(args, char *);
+        if (j == NULL)
+                return (-1);
+        i = 0;
+        while (j[i] != '\0')
+        {
+                _putchar(j[i]);
+                i++;
+                chars++;
+        }
+        return (chars);
 }
 /**
  *print_char - a funciton that prints out a character
- *@args: a variable that takes in a varrying amount of function arguments
+ *@args: a variable that takes in a varrying amount of function argum	\
+ ents
  *Return: Zero is returned
  */
 int print_char(va_list args)
 {
-	char j;
+        char j;
 
-	j = va_arg(args, int);
-	_putchar(j);
-	return (0);
+        j = va_arg(args, int);
+        _putchar(j);
+        return (1);
 }
 /**
  *print_int - A function that prints out the integer
- *@args: a variable that takes in a varrying amount of function arguments
+ *@args: a variable that takes in a varrying amount of function argum	\
+ ents
  *Return: The character
  */
 int print_int(va_list args)
 {
-	int n, chars;
+        int n, chars;
 
-	n = va_arg(args, int);
-	chars = print_number(n);
-	return (chars);
+        n = va_arg(args, int);
+        chars = print_number(n);
+        return (chars);
 }
 /**
  *_printf - Remaking the printf function in the standard input output library

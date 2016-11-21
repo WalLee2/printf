@@ -1,15 +1,14 @@
 #include "holberton.h"
-
 /**
  * print_number - A function that prints out numbers
  * @n: number to print
  * Return: the number
  */
-
-void print_number(int n)
+int print_number(int n)
 {
-	int sign, ten;
+	int sign, ten, chars;
 
+	chars = 0;
 	sign = 1;
 	ten = 1000000000;
 	if (n > 0)
@@ -26,10 +25,12 @@ void print_number(int n)
 		if (sign == 1)
 		{
 			_putchar('-');
+			chars++;
 		}
 		while (ten >= 1)
 		{
 			_putchar(-(n / ten) + '0');
+			chars++;
 			n = n % ten;
 			ten = ten / 10;
 		}
@@ -37,5 +38,7 @@ void print_number(int n)
 	else
 	{
 		_putchar('0');
+		chars++;
 	}
+	return (chars);
 }
