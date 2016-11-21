@@ -5,6 +5,12 @@
 int _printf(const char *format, ...);
 int _putchar(char c);
 int print_number(int n);
+/**
+ *struct print_a - A struct that has a pointer character and a pointer
+ *to a function
+ *@s: a character pointer
+ *@f: a function pointer
+ */
 typedef struct print_a
 {
 	char *s;
