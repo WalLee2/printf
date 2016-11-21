@@ -2,9 +2,9 @@
 #include <unistd.h>
 #include <stdarg.h>
 /**
- *
- *
- *
+ *print_str - a function that prints out a string
+ *@args: a list of all the arguments that the function will take
+ *Return: The number of characters
  */
 int print_str(va_list args)
 {
@@ -23,25 +23,36 @@ int print_str(va_list args)
 	}
 	return (chars);
 }
+/**
+ *print_char - a funciton that prints out a character
+ *@args: a variable that takes in a varrying amount of function arguments
+ *Return: Zero is returned
+ */
 int print_char(va_list args)
 {
-	char *j;
-	j = va_arg(args, char *);
-	_putchar(*j);
-	return (0);
-}
-int print_int(va_list args)
-{
-	int *n;
+	char j;
 
-	n = va_arg(args, int *);
-	print_number(*n);
+	j = va_arg(args, int);
+	_putchar(j);
 	return (0);
 }
 /**
- *
- *
- *
+ *print_int - A function that prints out the integer
+ *@args: a variable that takes in a varrying amount of function arguments
+ *Return: The character
+ */
+int print_int(va_list args)
+{
+	int n, chars;
+
+	n = va_arg(args, int);
+	chars = print_number(n);
+	return (chars);
+}
+/**
+ *_printf - Remaking the printf function in the standard input output library
+ *@format: Detects what format the arguments come in as
+ *Return: The number of characters to be printed
  */
 int _printf(const char *format, ...)
 {

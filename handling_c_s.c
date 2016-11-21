@@ -31,6 +31,7 @@ int print_str(va_list args)
 int print_char(va_list args)
 {
 	char *j;
+
 	j = va_arg(args, char *);
 	_putchar(*j);
 	return (0);
