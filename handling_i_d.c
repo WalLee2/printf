@@ -14,16 +14,13 @@ int print_str(va_list args)
 	chars = 0;
 	j = va_arg(args, char *);
 	if (j == NULL)
-		_puts("(null)");
-	else
+		j = "(null)";
+	i = 0;
+	while (j[i] != '\0')
 	{
-		i = 0;
-		while (j[i] != '\0')
-		{
-			_putchar(j[i]);
-			i++;
-			chars++;
-		}
+		_putchar(j[i]);
+		i++;
+		chars++;
 	}
 	return (chars);
 }
