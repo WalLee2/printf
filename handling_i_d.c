@@ -11,9 +11,10 @@ int print_str(va_list args)
 	char *j;
 	int i, chars;
 
+	chars = 0;
 	j = va_arg(args, char *);
 	if (j == NULL)
-		return (-1);
+		return (chars);
 	i = 0;
 	while (j[i] != '\0')
 	{
@@ -25,8 +26,7 @@ int print_str(va_list args)
 }
 /**
  *print_char - a funciton that prints out a character
- *@args: a variable that takes in a varrying amount of function argum	\
- ents
+ *@args: a variable that takes in a varrying amount of function arguments
  *Return: Zero is returned
  */
 int print_char(va_list args)
@@ -39,8 +39,7 @@ int print_char(va_list args)
 }
 /**
  *print_int - A function that prints out the integer
- *@args: a variable that takes in a varrying amount of function argum	\
- ents
+ *@args: a variable that takes in a varrying amount of function arguments
  *Return: The character
  */
 int print_int(va_list args)
@@ -50,6 +49,17 @@ int print_int(va_list args)
 	n = va_arg(args, int);
 	chars = print_number(n);
 	return (chars);
+}
+/**
+ *print_per - a function that accounts for %% as an input
+ *@p: A parameter that stores a % and prints it
+ *Return: Return the % character
+ */
+int print_per(int p)
+{
+	p = '%';
+	_putchar(p);
+	return (1);
 }
 /**
  *_printf - Remaking the printf function in the standard input output library
@@ -63,28 +73,27 @@ int _printf(const char *format, ...)
 	print_a_t print_a[] = {
 		{"s", print_str},
 		{"c", print_char},
+		{"%", print_per},
 		{"i", print_int},
-		{"d", print_int}
+		{"d", print_int},
+		{NULL, NULL},
 	};
 	va_start(args, format);
 
-	if (format == NULL)
-	{
-		write(1, "Error\n", 6);
-		return (-1);
-	}
-	i = chars = 0;
+	chars = i = 0;
+	if (args == NULL || format == NULL)
+		return (chars);
 	while (format != NULL && format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
 			i++;
 			j = 0;
-			while (j < 4)
+			while (j < 5)
 			{
 				if (*print_a[j].s == format[i])
 				{
-					chars += print_a[j].f(args);
+					chars += (print_a[j].f(args));
 				}
 				j++;
 			}
