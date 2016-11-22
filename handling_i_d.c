@@ -14,13 +14,16 @@ int print_str(va_list args)
 	chars = 0;
 	j = va_arg(args, char *);
 	if (j == NULL)
-		return (chars);
-	i = 0;
-	while (j[i] != '\0')
+		write (1, "(null)", 6);
+	else
 	{
-		_putchar(j[i]);
-		i++;
-		chars++;
+		i = 0;
+		while (j[i] != '\0')
+		{
+			_putchar(j[i]);
+			i++;
+			chars++;
+		}
 	}
 	return (chars);
 }
@@ -51,17 +54,6 @@ int print_int(va_list args)
 	return (chars);
 }
 /**
- *print_per - a function that accounts for %% as an input
- *@p: A parameter that stores a % and prints it
- *Return: Return the % character
- */
-int print_per(int p)
-{
-	p = '%';
-	_putchar(p);
-	return (1);
-}
-/**
  *_printf - Remaking the printf function in the standard input output library
  *@format: Detects what format the arguments come in as
  *Return: The number of characters to be printed
@@ -76,12 +68,12 @@ int _printf(const char *format, ...)
 		{"%", print_per},
 		{"i", print_int},
 		{"d", print_int},
-		{NULL, NULL},
+		{NULL, NULL}
 	};
 	va_start(args, format);
 
 	chars = i = 0;
-	if (args == NULL || format == NULL)
+	if (format == NULL || args == NULL)
 		return (chars);
 	while (format != NULL && format[i] != '\0')
 	{
