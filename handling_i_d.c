@@ -14,7 +14,7 @@ int print_str(va_list args)
 	chars = 0;
 	j = va_arg(args, char *);
 	if (j == NULL)
-		write(1, "(null)", 6);
+		_puts("(null)");
 	else
 	{
 		i = 0;
