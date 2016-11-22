@@ -51,6 +51,17 @@ int print_int(va_list args)
 	return (chars);
 }
 /**
+ *
+ *
+ *
+ */
+int print_per(int p)
+{
+	p = '%';
+	_putchar(p);
+	return (1);
+}
+/**
  *_printf - Remaking the printf function in the standard input output library
  *@format: Detects what format the arguments come in as
  *Return: The number of characters to be printed
@@ -62,23 +73,23 @@ int _printf(const char *format, ...)
 	print_a_t print_a[] = {
 		{"s", print_str},
 		{"c", print_char},
+		{"%", print_per},
 		{"i", print_int},
-		{"d", print_int}
+		{"d", print_int},
+		{NULL, NULL},
 	};
 	va_start(args, format);
 
-	i = chars = 0;
+	chars = i = 0;
 	if (args == NULL || format == NULL)
-	{
 		return (chars);
-	}
 	while (format != NULL && format[i] != '\0')
 	{
-		if (format[i] == '%' && format[i + 1] == *print_a[j].s)
+	        if (format[i] == '%')
 		{
 			i++;
 			j = 0;
-			while (j < 4)
+			while (j < 5)
 			{
 				if (*print_a[j].s == format[i])
 				{
