@@ -1,5 +1,30 @@
 #include "holberton.h"
 /**
+ *_puts - a function that prints out the string followed by a new line.
+ *@str: a variable that contains the string.
+ *
+ */
+void _puts(char *str)
+{
+	int i;
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		_putchar(str[i]);
+	}
+}
+/**
+ *print_per - a function that accounts for %% as an input
+ *@p: A parameter that stores a % and prints it
+ *Return: Return the % character
+ */
+int print_per(int p)
+{
+	p = '%';
+	_putchar(p);
+	return (1);
+}
+/**
  * print_number - A function that prints out numbers
  * @n: number to print
  * Return: the number
