@@ -5,6 +5,9 @@
 int _printf(const char *format, ...);
 int _putchar(char c);
 int print_number(int n);
+void a_struct(void);
+int print_per(int p);
+void _puts(char *str);
 /**
  *struct print_a - A struct that has a pointer character and a pointer
  *to a function
