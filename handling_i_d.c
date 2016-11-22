@@ -11,11 +11,10 @@ int print_str(va_list args)
 	char *j;
 	int i, chars;
 
-	j = 0;
 	chars = 0;
+	j = va_arg(args, char *);
 	if (j == NULL)
 		return (chars);
-	j = va_arg(args, char *);
 	i = 0;
 	while (j[i] != '\0')
 	{
@@ -27,8 +26,7 @@ int print_str(va_list args)
 }
 /**
  *print_char - a funciton that prints out a character
- *@args: a variable that takes in a varrying amount of function argum	\
- ents
+ *@args: a variable that takes in a varrying amount of function arguments
  *Return: Zero is returned
  */
 int print_char(va_list args)
@@ -76,7 +74,7 @@ int _printf(const char *format, ...)
 	}
 	while (format != NULL && format[i] != '\0')
 	{
-		if (format[i] == '%' && format[i + 1] != '%')
+		if (format[i] == '%' && format[i + 1] == *print_a[j].s)
 		{
 			i++;
 			j = 0;
@@ -84,7 +82,7 @@ int _printf(const char *format, ...)
 			{
 				if (*print_a[j].s == format[i])
 				{
-					chars += print_a[j].f(args);
+					chars += (print_a[j].f(args));
 				}
 				j++;
 			}
