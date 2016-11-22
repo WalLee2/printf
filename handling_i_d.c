@@ -51,9 +51,9 @@ int print_int(va_list args)
 	return (chars);
 }
 /**
- *
- *
- *
+ *print_per - a function that accounts for %% as an input
+ *@p: A parameter that stores a % and prints it
+ *Return: Return the % character
  */
 int print_per(int p)
 {
@@ -85,7 +85,7 @@ int _printf(const char *format, ...)
 		return (chars);
 	while (format != NULL && format[i] != '\0')
 	{
-	        if (format[i] == '%')
+		if (format[i] == '%')
 		{
 			i++;
 			j = 0;
