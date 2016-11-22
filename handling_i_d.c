@@ -58,6 +58,7 @@ int print_int(va_list args)
 int _printf(const char *format, ...)
 {
 	va_list args;
+	int i, j, chars;
 	print_a_t print_a[] = {
 		{"s", print_str},
 		{"c", print_char},
@@ -66,10 +67,8 @@ int _printf(const char *format, ...)
 		{"d", print_int},
 		{NULL, NULL}
 	};
-	int i, chars;
-	char checker;
-
 	va_start(args, format);
+
 	chars = i = 0;
 	if (format == NULL || args == NULL)
 		return (chars);
@@ -78,11 +77,14 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			checker = checkformatter(args, print_a, format[i]);
-			if (checker == 0)
+			j = 0;
+			while (j < 5)
 			{
-				_putchar(format[i]);
-				chars++;
+				if (*print_a[j].s == format[i])
+				{
+					chars += (print_a[j].f(args));
+				}
+				j++;
 			}
 		}
 		else
