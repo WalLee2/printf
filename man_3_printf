@@ -1,19 +1,15 @@
-.TH man 2 "19 November 2016" "0.32" "printf man page"
+.TH _printf 3 "19 November 2016" "0.07" "_printf man page"
 .SH NAME
-printf
+_printf
 .SH SYNOPSIS
 Simplified version of printf
 .SH DESCRIPTION
-The functions in the printf() family produce output according to a format as described below. The functions printf() and vprintf() write output to stdout, the standard output stream; fprintf() and vfprintf() write output to the given output stream; sprintf(), snprintf(), vsprintf() and vsnprintf() write to the character string str.
-
-The functions snprintf() and vsnprintf() write at most size bytes (including the terminating null byte ('\0')) to str.
+_printf is a function that produces output according to format. It takes into account several specifiers: "c", "s", "%", "d" and "i". However, _printf does not reproduce the buffer handling of the C library  printf function.
 .SH OPTIONS
-No options.
-.SH SEE ALSO
-.I peerlearning(2), projectbased(2), fullstack(2), Betty(1)
+No options. It does not handle the flag characters, the field width, precision or the length modifiers.
 .SH BUGS
-Because sprintf() and vsprintf() assume an arbitrarily long string, callers must be careful not to overflow the actual space; this is often impossible to assure. Note that the length of the strings produced is locale-dependent and difficult to predict.
-
-.B Also, see Betty.
+(Tests run under Vagrant, Ubuntu 14.04) Hopefully, none. Actually, does not handle several "%" signs or if "%" does not follow an identifier, such as "c", "s", "d", or "i" for example, "%" will not print when it is supposed to such as in "%z;1234\n" which prints ";1234\n", while the correct output should be "%;1234".
+.B Also, see Betty for more details about the tests and the format chosen:
+https://github.com/holbertonschool/Betty/blob/master/betty-style.pl and https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl.
 .SH AUTHOR
 Walton Lee, Ian C.
