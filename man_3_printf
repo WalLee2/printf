@@ -5,11 +5,38 @@ _printf
 Simplified version of printf
 .SH DESCRIPTION
 _printf is a function that produces output according to format. It takes into account several specifiers: "c", "s", "%", "d" and "i". However, _printf does not reproduce the buffer handling of the C library  printf function.
+.SS Return value
+The function will return the number of characters printed. A value of 0 will be returned if NULL is passed in as an argument without any specifiers.
 .SH OPTIONS
 No options. It does not handle the flag characters, the field width, precision or the length modifiers.
 .SH BUGS
-(Tests run under Vagrant, Ubuntu 14.04) Hopefully, none. Actually, does not handle several "%" signs or if "%" does not follow an identifier, such as "c", "s", "d", or "i" for example, "%" will not print when it is supposed to such as in "%z;1234\n" which prints ";1234\n", while the correct output should be "%;1234".
-.B Also, see Betty for more details about the tests and the format chosen:
-https://github.com/holbertonschool/Betty/blob/master/betty-style.pl and https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl.
+(Tests ran under Vagrant, Ubuntu 14.04) This function, _printf, does not properly handle several "%" signs when passed as the only argument:
+
+Ex:
+_printf("%%%%% (newline)");
+
+Correct output: %%%
+
+Current output: %% (not on a new line)
+
+_printf("% % % % % (newline)");
+
+Correct output: % % %
+
+Current output: a new line
+
+If "%" does not follow a known identifier, such as "c", "s", "d", or "i". For example, "%" will not print out properly in "%z;1234\n". In the _printf function it prints ";1234\n". The correct output should be "%;1234".
+.SH EXAMPLE
+To print (null)125cHello:
+
+#include "holberton.h"
+
+_printf("%s125%c%s", NULL, 'c', "Hello");
+
+.SH SEE ALSO
+.B For more details about styling, formatting, and documentation please visit:
+
+https://github.com/holbertonschool/Betty/wiki
+
 .SH AUTHOR
 Walton Lee, Ian C.
