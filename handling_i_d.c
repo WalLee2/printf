@@ -1,6 +1,7 @@
 #include "holberton.h"
 #include <unistd.h>
 #include <stdarg.h>
+#include <stdio.h>
 /**
  *print_str - a function that prints out a string
  *@args: a list of all the arguments that the function will take
@@ -58,42 +59,20 @@ int print_int(va_list args)
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int i, j, chars;
+	int chars, formatter;
 	print_a_t print_a[] = {
-		{"s", print_str},
-		{"c", print_char},
-		{"%", print_per},
-		{"i", print_int},
-		{"d", print_int},
-		{NULL, NULL}
+		{'s', print_str},
+		{'c', print_char},
+		{'%', print_per},
+		{'i', print_int},
+		{'d', print_int},
 	};
 	va_start(args, format);
 
-	chars = i = 0;
+	chars = formatter = 0;
 	if (format == NULL || args == NULL)
 		return (chars);
-	while (format != NULL && format[i] != '\0')
-	{
-		if (format[i] == '%')
-		{
-			i++;
-			j = 0;
-			while (j < 5)
-			{
-				if (*print_a[j].s == format[i])
-				{
-					chars += (print_a[j].f(args));
-				}
-				j++;
-			}
-		}
-		else
-		{
-			_putchar(format[i]);
-			chars++;
-		}
-		i++;
-	}
+	chars = check_formatter(args, format, print_a);
 	va_end(args);
 	return (chars);
 }

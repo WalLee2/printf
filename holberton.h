@@ -2,6 +2,7 @@
 #define HOLBERTON_H
 #include <unistd.h>
 #include <stdarg.h>
+#include <stdio.h>
 /**
  *struct print_a - A struct that has a pointer character and a pointer
  *to a function
@@ -10,14 +11,13 @@
  */
 typedef struct print_a
 {
-	char *s;
+	char s;
 	int (*f)();
 } print_a_t;
-int checkformatter(va_list args, print_a_t print_a[], char format);
+int check_formatter(va_list args, const char *format, print_a_t print_a[]);
 int _printf(const char *format, ...);
 int _putchar(char c);
 int print_number(int n);
 void a_struct(void);
 int print_per(int p);
-void _puts(char *str);
 #endif

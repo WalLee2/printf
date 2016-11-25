@@ -1,18 +1,48 @@
 #include "holberton.h"
 #include <stdarg.h>
 /**
- *_puts - a function that prints out the string followed by a new line.
- *@str: a variable that contains the string.
- *
+ *check_formatter - Function that checks if the character pointer is NULL, and
+ *if it is NULL, it will return the number of charaters which is 0. Verifies
+ *if the first character is a "%", if it is, move to the next character,
+ *checks the array of structs, if they match, run the function. If not, print
+ *the % and the character.
+ *@args: a pointer that is initiated by va_list
+ *@format: a pointer variable that points to what's being passed to _printf
+ *@print_a: The array of structs that is initated in the _printf function
+ *Return: The number of characters that was printed
  */
-void _puts(char *str)
+int check_formatter(va_list args, const char *format, print_a_t print_a[])
 {
-	int i;
+	int formatter, i, j, chars;
 
-	for (i = 0; str[i] != '\0'; i++)
+	formatter = i = j = chars = 0;
+	for (i = 0; format != NULL && format[i] != '\0'; i++)
 	{
-		_putchar(str[i]);
+		if (format[i] == '%')
+		{
+			i++;
+			for (j = 0; j < 5; j++)
+			{
+				if (print_a[j].s == format[i])
+				{
+					chars += (print_a[j].f(args));
+					formatter = 1;
+				}
+			}
+			if (formatter == 0)
+			{
+				i--;
+				_putchar(format[i]);
+				chars++;
+			}
+		}
+		else
+		{
+			_putchar(format[i]);
+			chars++;
+		}
 	}
+	return (chars);
 }
 /**
  *print_per - a function that accounts for %% as an input
