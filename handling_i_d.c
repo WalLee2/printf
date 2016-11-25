@@ -72,7 +72,7 @@ int _printf(const char *format, ...)
 	chars = formatter = 0;
 	if (format == NULL || args == NULL)
 		return (chars);
-	chars = check_formatter(args, format, print_a);
+	chars += check_formatter(args, format, print_a);
 	va_end(args);
 	return (chars);
 }
