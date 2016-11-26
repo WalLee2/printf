@@ -21,7 +21,7 @@ int check_formatter(va_list args, const char *format, print_a_t print_a[])
 		if (format[i] == '%')
 		{
 			i++;
-			for (j = 0; j < 5; j++)
+			for (j = 0; j < 7; j++)
 			{
 				if (print_a[j].s == format[i])
 				{
@@ -33,7 +33,9 @@ int check_formatter(va_list args, const char *format, print_a_t print_a[])
 			{
 				i--;
 				_putchar(format[i]);
-				chars++;
+				i++;
+				_putchar(format[i]);
+				chars += 2;
 			}
 		}
 		else
@@ -42,6 +44,62 @@ int check_formatter(va_list args, const char *format, print_a_t print_a[])
 			chars++;
 		}
 	}
+	return (chars);
+}
+/**
+ *print_rev - a function that prints the string in reverse
+ *@s: a variable that points to the first address in memory of
+ *the string
+ */
+int print_rev(char *s)
+{
+	int i, chars;
+
+	chars = 0;
+	for (i = 0; s[i] != '\0'; i++)
+		;
+	for (; i != 0; i--)
+	{
+		_putchar(s[i - 1]);
+		chars++;
+	}
+	_putchar('\n');
+	chars++;
+	return (chars);
+}
+/**
+ *print_rot13 - a function that will print a string in rot13
+ *@o: a pointer variable that points to the first address in memory
+ *of the string being observed
+ *Return: The new string after being modified
+ */
+int print_rot13(char *o)
+{
+	int i, chars;
+
+	i =  chars = 0;
+	while (o[i] != '\0')
+	{
+		if ((o[i] >= 'a' && o[i] <= 'z') || (o[i] >= 'A' && o[i] <= 'Z'))
+		{
+			while ((o[i] >= 'a' && o[i] <= 'm') ||
+			       (o[i] >= 'A' && o[i] <= 'M'))
+			{
+				o[i] += 13;
+				i++;
+			}
+			while ((o[i] >= 'n' && o[i] <= 'z') ||
+			       (o[i] >= 'N' && o[i] <= 'Z'))
+			{
+				o[i] -= 13;
+				i--;
+			}
+		}
+		else
+			i++;
+	}
+	_putchar (o[i]);
+	chars++;
 	return (chars);
 }
 /**

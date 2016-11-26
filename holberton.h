@@ -20,4 +20,6 @@ int _putchar(char c);
 int print_number(int n);
 void a_struct(void);
 int print_per(int p);
+int print_rev(char *s);
+int print_rot13(char *o);
 #endif

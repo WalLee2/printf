@@ -66,13 +66,15 @@ int _printf(const char *format, ...)
 		{'%', print_per},
 		{'i', print_int},
 		{'d', print_int},
+		{'r', print_rev},
+		{'R', print_rot13},
 	};
 	va_start(args, format);
 
 	chars = formatter = 0;
 	if (format == NULL || args == NULL)
 		return (chars);
-	chars += check_formatter(args, format, print_a);
+	chars = check_formatter(args, format, print_a);
 	va_end(args);
 	return (chars);
 }
