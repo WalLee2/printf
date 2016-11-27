@@ -1,5 +1,6 @@
 #include "holberton.h"
 #include <stdarg.h>
+#include <stdio.h>
 /**
  *check_formatter - Function that checks if the character pointer is NULL, and
  *if it is NULL, it will return the number of charaters which is 0. Verifies
@@ -51,11 +52,13 @@ int check_formatter(va_list args, const char *format, print_a_t print_a[])
  *@s: a variable that points to the first address in memory of
  *the string
  */
-int print_rev(char *s)
+int print_rev(va_list args)
 {
+	char *s;
 	int i, chars;
 
 	chars = 0;
+	s = va_arg(args, char *);
 	for (i = 0; s[i] != '\0'; i++)
 		;
 	for (; i != 0; i--)
@@ -63,8 +66,6 @@ int print_rev(char *s)
 		_putchar(s[i - 1]);
 		chars++;
 	}
-	_putchar('\n');
-	chars++;
 	return (chars);
 }
 /**
@@ -73,33 +74,48 @@ int print_rev(char *s)
  *of the string being observed
  *Return: The new string after being modified
  */
-int print_rot13(char *o)
+int print_rot13(va_list args)
 {
+	char *o;
 	int i, chars;
 
-	i =  chars = 0;
+	printf("I'm here");
+	i = chars = 0;
+	o = va_arg(args, char*);
 	while (o[i] != '\0')
 	{
-		if ((o[i] >= 'a' && o[i] <= 'z') || (o[i] >= 'A' && o[i] <= 'Z'))
+		printf("In the while loop");
+		if ((o[i] >= 'a' && o[i] <= 'z') ||
+		    (o[i] >= 'A' && o[i] <= 'Z'))
 		{
+			printf("In the if conditional");
+
 			while ((o[i] >= 'a' && o[i] <= 'm') ||
 			       (o[i] >= 'A' && o[i] <= 'M'))
 			{
+				printf("I'm in the first while loop");
 				o[i] += 13;
+				_putchar (o[i]);
+				chars++;
 				i++;
 			}
+			printf("I'm done with the first while loop");
 			while ((o[i] >= 'n' && o[i] <= 'z') ||
 			       (o[i] >= 'N' && o[i] <= 'Z'))
 			{
+				printf("I'm in the second while loop");
 				o[i] -= 13;
+				_putchar (o[i]);
+				chars++;
 				i--;
 			}
+			printf("I'm done with the second while loop");
 		}
 		else
+		{
 			i++;
+		}
 	}
-	_putchar (o[i]);
-	chars++;
 	return (chars);
 }
 /**

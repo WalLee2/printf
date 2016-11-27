@@ -59,7 +59,7 @@ int print_int(va_list args)
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int chars, formatter;
+	int chars;
 	print_a_t print_a[] = {
 		{'s', print_str},
 		{'c', print_char},
@@ -67,11 +67,11 @@ int _printf(const char *format, ...)
 		{'i', print_int},
 		{'d', print_int},
 		{'r', print_rev},
-		{'R', print_rot13},
+		{'R', print_rot13}
 	};
 	va_start(args, format);
 
-	chars = formatter = 0;
+	chars = 0;
 	if (format == NULL || args == NULL)
 		return (chars);
 	chars = check_formatter(args, format, print_a);
