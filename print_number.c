@@ -74,32 +74,26 @@ int print_rev(va_list args)
  *of the string being observed
  *Return: The new string after being modified
  */
-int print_rot13(va_list args)
+/*int print_rot13(va_list args)
 {
 	char *o;
 	int i, chars;
 
-	printf("I'm here");
-	i = chars = 0;
-	o = va_arg(args, char*);
+	chars = 0;
 	while (o[i] != '\0')
 	{
-		printf("In the while loop");
 		if ((o[i] >= 'a' && o[i] <= 'z') ||
 		    (o[i] >= 'A' && o[i] <= 'Z'))
 		{
-			printf("In the if conditional");
 
 			while ((o[i] >= 'a' && o[i] <= 'm') ||
 			       (o[i] >= 'A' && o[i] <= 'M'))
 			{
-				printf("I'm in the first while loop");
 				o[i] += 13;
 				_putchar (o[i]);
 				chars++;
 				i++;
 			}
-			printf("I'm done with the first while loop");
 			while ((o[i] >= 'n' && o[i] <= 'z') ||
 			       (o[i] >= 'N' && o[i] <= 'Z'))
 			{
@@ -117,7 +111,7 @@ int print_rot13(va_list args)
 		}
 	}
 	return (chars);
-}
+	}*/
 /**
  *print_per - a function that accounts for %% as an input
  *@p: A parameter that stores a % and prints it
