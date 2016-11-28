@@ -67,7 +67,6 @@ int _printf(const char *format, ...)
 		{'i', print_int},
 		{'d', print_int},
 		{'r', print_rev},
-		/*{'R', print_rot13}*/
 	};
 	va_start(args, format);
 

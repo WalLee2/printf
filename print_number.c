@@ -69,50 +69,6 @@ int print_rev(va_list args)
 	return (chars);
 }
 /**
- *print_rot13 - a function that will print a string in rot13
- *@o: a pointer variable that points to the first address in memory
- *of the string being observed
- *Return: The new string after being modified
- */
-/*int print_rot13(va_list args)
-{
-	char *o;
-	int i, chars;
-
-	chars = 0;
-	while (o[i] != '\0')
-	{
-		if ((o[i] >= 'a' && o[i] <= 'z') ||
-		    (o[i] >= 'A' && o[i] <= 'Z'))
-		{
-
-			while ((o[i] >= 'a' && o[i] <= 'm') ||
-			       (o[i] >= 'A' && o[i] <= 'M'))
-			{
-				o[i] += 13;
-				_putchar (o[i]);
-				chars++;
-				i++;
-			}
-			while ((o[i] >= 'n' && o[i] <= 'z') ||
-			       (o[i] >= 'N' && o[i] <= 'Z'))
-			{
-				printf("I'm in the second while loop");
-				o[i] -= 13;
-				_putchar (o[i]);
-				chars++;
-				i--;
-			}
-			printf("I'm done with the second while loop");
-		}
-		else
-		{
-			i++;
-		}
-	}
-	return (chars);
-	}*/
-/**
  *print_per - a function that accounts for %% as an input
  *@p: A parameter that stores a % and prints it
  *Return: Return the % character

@@ -21,5 +21,4 @@ int print_number(int n);
 void a_struct(void);
 int print_per(int p);
 int print_rev(va_list args);
-/*int print_rot13(va_list args);*/
 #endif
