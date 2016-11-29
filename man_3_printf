@@ -6,7 +6,7 @@ Simplified version of printf
 .SH DESCRIPTION
 _printf is a function that produces output according to format. It takes into account several specifiers: "c", "s", "%", "d" and "i". However, _printf does not reproduce the buffer handling of the C library  printf function.
 .SS Return value
-The function will return the number of characters printed. A value of 0 will be returned if NULL is passed in as an argument without any specifiers.
+The function will return the number of characters printed. A value of -1 will be returned if NULL is passed in as an argument without any specifiers.
 .SH OPTIONS
 No options. It does not handle the flag characters, the field width, precision or the length modifiers.
 .SH BUGS
